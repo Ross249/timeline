@@ -4,13 +4,30 @@ import Breadcrumbs from "@mui/material/Breadcrumbs";
 import HomeIcon from "@mui/icons-material/Home";
 import WhatshotIcon from "@mui/icons-material/Whatshot";
 import Link from "../components/Link";
+import { Box } from "@mui/material";
 type Props = {
   children?: ReactNode;
   title?: string;
 };
 
 const Layout = ({ children, title = "This is the default title" }: Props) => (
-  <div>
+  <Box
+    sx={{
+      display: "flex",
+      flexDirection: "column",
+      height: "100%",
+      justifyContent: "center",
+      alignItems: "center",
+      padding: [5, 10],
+      bgcolor: (theme) => (theme.palette.mode === "dark" ? "#101010" : "#fff"),
+      color: (theme) =>
+        theme.palette.mode === "dark" ? "grey.300" : "grey.800",
+      borderColor: (theme) =>
+        theme.palette.mode === "dark" ? "grey.800" : "grey.300",
+      fontSize: "0.875rem",
+      fontWeight: "700",
+    }}
+  >
     <Head>
       <title>{title}</title>
       <meta charSet="utf-8" />
@@ -40,19 +57,10 @@ const Layout = ({ children, title = "This is the default title" }: Props) => (
           underline="hover"
           sx={{ display: "flex", alignItems: "center" }}
           color="inherit"
-          href="/users"
+          href="/contents"
         >
           <WhatshotIcon sx={{ mr: 0.5 }} fontSize="inherit" />
-          Users List
-        </Link>
-        <Link
-          underline="hover"
-          sx={{ display: "flex", alignItems: "center" }}
-          color="inherit"
-          href="/api/users"
-        >
-          <WhatshotIcon sx={{ mr: 0.5 }} fontSize="inherit" />
-          Users API
+          Contents List
         </Link>
         <Link
           underline="hover"
@@ -70,7 +78,7 @@ const Layout = ({ children, title = "This is the default title" }: Props) => (
       <hr />
       <span>JimLuo @copyright</span>
     </footer>
-  </div>
+  </Box>
 );
 
 export default Layout;
