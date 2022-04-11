@@ -54,6 +54,15 @@ const Layout = ({ children, title = "This is the default title" }: Props) => (
           <WhatshotIcon sx={{ mr: 0.5 }} fontSize="inherit" />
           Users API
         </Link>
+        <Link
+          underline="hover"
+          sx={{ display: "flex", alignItems: "center" }}
+          color="inherit"
+          href="/api/contents"
+        >
+          <WhatshotIcon sx={{ mr: 0.5 }} fontSize="inherit" />
+          Contents API
+        </Link>
       </Breadcrumbs>
     </header>
     {children}
