@@ -1,8 +1,8 @@
 import * as React from "react";
-import ListItem from "./ListItem";
 import { Info } from "../interfaces/info";
 import { Box } from "@mui/material";
-
+import Link from "../components/Link";
+import PostCard from "./PostCard";
 import Timeline from "@mui/lab/Timeline";
 import TimelineItem from "@mui/lab/TimelineItem";
 import TimelineSeparator from "@mui/lab/TimelineSeparator";
@@ -12,24 +12,30 @@ import TimelineDot from "@mui/lab/TimelineDot";
 
 type Props = {
   items: Info[];
+  checked: boolean;
 };
 
-const List = ({ items }: Props) => (
-  <Box>
-    <Timeline position="alternate">
-      {items.map((item) => (
-        <TimelineItem key={item.id}>
-          <TimelineSeparator>
-            <TimelineDot />
-            <TimelineConnector />
-          </TimelineSeparator>
-          <TimelineContent sx={{ width: "100%" }}>
-            <ListItem data={item} />
-          </TimelineContent>
-        </TimelineItem>
-      ))}
-    </Timeline>
-  </Box>
-);
+const List = ({ items, checked }: Props) => {
+  console.log(checked);
+  return (
+    <Box>
+      <Timeline position="alternate">
+        {items.map((item) => (
+          <TimelineItem key={item.id}>
+            <TimelineSeparator>
+              <TimelineDot />
+              <TimelineConnector />
+            </TimelineSeparator>
+            <TimelineContent sx={{ maxWidth: "100%" }}>
+              <Link href="/contents/[id]" as={`/contents/${item.id}`}>
+                <PostCard data={item} />
+              </Link>
+            </TimelineContent>
+          </TimelineItem>
+        ))}
+      </Timeline>
+    </Box>
+  );
+};
 
 export default List;

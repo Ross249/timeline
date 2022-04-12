@@ -11,6 +11,11 @@ const getRandomItem = (arr: Info[], count: number = 10): Info[] => {
 
     randomSample.push(item);
   }
+
+  randomSample.sort((a, b) => {
+    return Date.parse(b.create_time) - Date.parse(a.create_time);
+  });
+
   return randomSample;
 };
 
