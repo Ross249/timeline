@@ -1,6 +1,6 @@
 import React from "react";
 import Link from "../components/Link";
-
+import PostCard from "./PostCard";
 import { Info } from "../interfaces/info";
 
 type Props = {
@@ -9,9 +9,7 @@ type Props = {
 
 const ListItem = ({ data }: Props) => (
   <Link href="/contents/[id]" as={`/contents/${data.id}`}>
-    <a>
-      {data.id}: {data.first_name}
-    </a>
+    <PostCard data={data} />
   </Link>
 );
 
