@@ -16,9 +16,8 @@ type Props = {
 };
 
 const List = ({ items, checked }: Props) => {
-  console.log(checked);
-  return (
-    <Box>
+  return !checked ? (
+    <Box sx={{ width: "70%" }}>
       <Timeline position="alternate">
         {items.map((item) => (
           <TimelineItem key={item.id}>
@@ -33,6 +32,53 @@ const List = ({ items, checked }: Props) => {
             </TimelineContent>
           </TimelineItem>
         ))}
+      </Timeline>
+    </Box>
+  ) : (
+    <Box sx={{ width: "70%" }}>
+      <Timeline>
+        {items.map((item, index) => {
+          let isEvent = index % 2 === 0;
+          if (isEvent) {
+            return (
+              <TimelineItem key={item.id}>
+                <TimelineSeparator>
+                  <TimelineDot />
+                  <TimelineConnector />
+                </TimelineSeparator>
+                <TimelineContent sx={{ maxWidth: "100%" }}>
+                  <Link href="/contents/[id]" as={`/contents/${item.id}`}>
+                    <PostCard data={item} />
+                  </Link>
+                </TimelineContent>
+              </TimelineItem>
+            );
+          } else {
+            return null;
+          }
+        })}
+      </Timeline>
+      <Timeline position="left">
+        {items.map((item, index) => {
+          let isEvent = index % 2 !== 0;
+          if (isEvent) {
+            return (
+              <TimelineItem key={item.id}>
+                <TimelineSeparator>
+                  <TimelineDot />
+                  <TimelineConnector />
+                </TimelineSeparator>
+                <TimelineContent sx={{ maxWidth: "100%" }}>
+                  <Link href="/contents/[id]" as={`/contents/${item.id}`}>
+                    <PostCard data={item} />
+                  </Link>
+                </TimelineContent>
+              </TimelineItem>
+            );
+          } else {
+            return null;
+          }
+        })}
       </Timeline>
     </Box>
   );
