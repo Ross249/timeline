@@ -71,7 +71,7 @@ const Layout = ({ children, title = "This is the default title" }: Props) => {
             href="/api/contents"
           >
             <WhatshotIcon sx={{ mr: 0.5 }} fontSize="inherit" />
-            Contents API
+            Contents Data
           </Link>
         </Breadcrumbs>
       </header>

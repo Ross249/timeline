@@ -35,52 +35,60 @@ const List = ({ items, checked }: Props) => {
       </Timeline>
     </Box>
   ) : (
-    <Box sx={{ width: "70%" }}>
-      <Timeline>
-        {items.map((item, index) => {
-          let isEvent = index % 2 === 0;
-          if (isEvent) {
-            return (
-              <TimelineItem key={item.id}>
-                <TimelineSeparator>
-                  <TimelineDot />
-                  <TimelineConnector />
-                </TimelineSeparator>
-                <TimelineContent sx={{ maxWidth: "100%" }}>
-                  <Link href="/contents/[id]" as={`/contents/${item.id}`}>
-                    <PostCard data={item} />
-                  </Link>
-                </TimelineContent>
-              </TimelineItem>
-            );
-          } else {
-            return null;
-          }
-        })}
-      </Timeline>
-      <Timeline position="left">
-        {items.map((item, index) => {
-          let isEvent = index % 2 !== 0;
-          if (isEvent) {
-            return (
-              <TimelineItem key={item.id}>
-                <TimelineSeparator>
-                  <TimelineDot />
-                  <TimelineConnector />
-                </TimelineSeparator>
-                <TimelineContent sx={{ maxWidth: "100%" }}>
-                  <Link href="/contents/[id]" as={`/contents/${item.id}`}>
-                    <PostCard data={item} />
-                  </Link>
-                </TimelineContent>
-              </TimelineItem>
-            );
-          } else {
-            return null;
-          }
-        })}
-      </Timeline>
-    </Box>
+    <>
+      <Box
+        sx={{
+          width: "140%",
+          display: "flex",
+        }}
+      >
+        <Timeline>
+          {items.map((item, index) => {
+            let isEvent = index % 2 === 0;
+            if (isEvent) {
+              return (
+                <TimelineItem key={item.id}>
+                  <TimelineContent sx={{ maxWidth: "100%" }}>
+                    <Link href="/contents/[id]" as={`/contents/${item.id}`}>
+                      <PostCard data={item} />
+                    </Link>
+                  </TimelineContent>
+                  <TimelineSeparator>
+                    <TimelineDot />
+                    <TimelineConnector />
+                  </TimelineSeparator>
+                </TimelineItem>
+              );
+            } else {
+              return null;
+            }
+          })}
+        </Timeline>
+
+        <Timeline position="left">
+          {items.map((item, index) => {
+            let isEvent = index % 2 !== 0;
+            if (isEvent) {
+              return (
+                <TimelineItem key={item.id}>
+                  <TimelineContent sx={{ maxWidth: "100%" }}>
+                    <Link href="/contents/[id]" as={`/contents/${item.id}`}>
+                      <PostCard data={item} />
+                    </Link>
+                  </TimelineContent>
+                  <TimelineSeparator>
+                    <TimelineDot />
+                    <TimelineConnector />
+                  </TimelineSeparator>
+                </TimelineItem>
+              );
+            } else {
+              return null;
+            }
+          })}
+        </Timeline>
+      </Box>
+    </>
   );
 };
 
