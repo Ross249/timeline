@@ -9,6 +9,7 @@ import TimelineSeparator from "@mui/lab/TimelineSeparator";
 import TimelineConnector from "@mui/lab/TimelineConnector";
 import TimelineContent from "@mui/lab/TimelineContent";
 import TimelineDot from "@mui/lab/TimelineDot";
+import Slide from "@mui/material/Slide";
 
 type Props = {
   items: Info[];
@@ -35,13 +36,13 @@ const List = ({ items, checked }: Props) => {
       </Timeline>
     </Box>
   ) : (
-    <>
-      <Box
-        sx={{
-          width: "140%",
-          display: "flex",
-        }}
-      >
+    <Box
+      sx={{
+        width: "140%",
+        display: "flex",
+      }}
+    >
+      <Slide direction="right" in={checked} mountOnEnter unmountOnExit>
         <Timeline>
           {items.map((item, index) => {
             let isEvent = index % 2 === 0;
@@ -64,7 +65,8 @@ const List = ({ items, checked }: Props) => {
             }
           })}
         </Timeline>
-
+      </Slide>
+      <Slide direction="left" in={checked} mountOnEnter unmountOnExit>
         <Timeline position="left">
           {items.map((item, index) => {
             let isEvent = index % 2 !== 0;
@@ -87,8 +89,8 @@ const List = ({ items, checked }: Props) => {
             }
           })}
         </Timeline>
-      </Box>
-    </>
+      </Slide>
+    </Box>
   );
 };
 
